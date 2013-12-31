@@ -1,7 +1,8 @@
 if (Meteor.isServer) {
 	Meteor.methods({
   serverButton: function () {
-    console.log("you pushed a button great...")
+  	totalClicks++;
+    console.log("you pushed a button " + totalClicks + " times.");
   },
 
   bar: function () {
@@ -12,6 +13,7 @@ if (Meteor.isServer) {
 
   Meteor.startup(function () {
     // code to run on server at startup
+    totalClicks = 0;
     console.log("I am the server. The server is me.");
     var Bitly = Meteor.require("bitly-oauth");
 	var b = new Bitly("wschornmeteor", "throwaway1");
