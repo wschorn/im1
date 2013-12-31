@@ -1,4 +1,15 @@
 if (Meteor.isServer) {
+	Meteor.methods({
+  serverButton: function () {
+    console.log("you pushed a button great...")
+  },
+
+  bar: function () {
+    // .. do other stuff ..
+    return "baz";
+  }
+});	
+
   Meteor.startup(function () {
     // code to run on server at startup
     console.log("I am the server. The server is me.");
