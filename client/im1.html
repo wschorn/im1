@@ -3,8 +3,13 @@
 </head>
 
 <body>
+
   {{> hello}}
-    {{> outfit}}
+   </br>
+  {{> myOutfits}}
+
+
+
 
 </body>
 
@@ -15,13 +20,24 @@
 </template>
 
 
+<template name="myOutfits">
+  <div class="myOutfits">
+	You have {{numOutfits}} outfits.
+	<h2>Your Outfits: </h2>
+   	{{#each outfits}}
+      {{> outfit}}
+    {{/each}}
+   </div>
+</template>
 
 
 <template name="outfit">
-	<h2>Outfit: {{outfitName}}</h2>
+	<div class="o_title">Outfit: {{name}} - <a href="#" class="delete">[x]</a></div>
+  <div class="o_description">{{description}}</div>
 	<ul id="garments">
 	  {{#each garments}}
-		  <li><a href="{{name}}">{{name}}</a> - in {{color}}.</li>
+		  <li><a href="{{name}}">{{name}}</a> - in {{color}}. </li>
 	  {{/each}}
 	</ul>
 </template>
+

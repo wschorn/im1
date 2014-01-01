@@ -1,17 +1,27 @@
 if (Meteor.isClient) {
+    Outfits = new Meteor.Collection("outfits");
+
+
   Template.hello.greeting = function () {
     return "Welcome to im1.";
   };
 
 
 
-    Template.outfit.outfitName = function () {
-    return "naked";
+  Template.myOutfits.outfits = function () {
+    return Outfits.find({});
   };
 
-  Template.outfit.garments = function () {
-    return [{name:'shirt', color:'black'}, {name:'pants', color:'blue'}];
+
+
+
+  Template.myOutfits.numOutfits = function () {
+
+    return Outfits.find({}).count();
+
   };
+
+
 
   Template.hello.events({
     'click input' : function () {
@@ -20,6 +30,13 @@ if (Meteor.isClient) {
         console.log("You pressed the button");
         Meteor.call('serverButton');
     }
+  });
+
+    Template.outfit.events({
+    'click .delete': function () {
+      console.log("you clicked delete on " + JSON.stringify(this));
+      Outfits.remove(this._id);
+    } 
   });
 }
 
