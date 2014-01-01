@@ -20,13 +20,6 @@ if (Meteor.isServer) {
     fetchOutfitFromBundle: function(bundleUrl) {
       console.log("starting");
       var newOutfit = {}
-      var bundleCallbackFunction = function(err, result){
-        if(!err){
-          return newOutfit;
-        }else{
-          console.error(err);
-        }
-      };
 
       // _wrapAsync is undocumented, but I freaking love it. Any of the bitly-oauth methods can be wrapped this way.
       b.bundleSync = Meteor._wrapAsync(b.bundle.contents);

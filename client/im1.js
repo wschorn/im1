@@ -3,7 +3,12 @@ if (Meteor.isClient) {
 
 
   Template.myOutfits.outfits = function () {
-    return Outfits.find({user: Session.get('viewingOutfits')});
+
+    var finder = {}
+    if (!Session.equals('viewingOutfits', "")){
+      finder = {user: Session.get('viewingOutfits')};
+    }
+    return Outfits.find(finder);
   };
 
 
