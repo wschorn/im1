@@ -31,7 +31,7 @@ if (Meteor.isServer) {
         } 
 
       newGarments = []
-      console.log("adding: " + result.data.bundle.links);
+      console.log("adding: " + JSON.stringify(result.data.bundle));
 
       for(var myLink in result.data.bundle.links){
         curr = result.data.bundle.links[myLink];
@@ -39,8 +39,8 @@ if (Meteor.isServer) {
         //ng = {name: curr['title'], link: curr['link'], color: 'black'};
         newGarments.push(ng);
       }
-
-      newOutfit = {name: result.data.bundle.title, description: result.data.bundle.description, garments: newGarments};
+      var rdb = result.data.bundle;
+      newOutfit = {user: rdb.bundle_owner, name: rdb.title, description: rdb.description, garments: newGarments};
       return newOutfit;
       //Outfits.insert(newOutfit);
       // For each bundle, get the bundle contents, each link should be a garment. 
