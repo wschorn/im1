@@ -6,6 +6,7 @@
 
   {{> hello}}
    </br>
+  {{> fetchOutfitForm}}
   {{> myOutfits}}
 
 
@@ -39,5 +40,13 @@
 		  <li><a href="{{name}}">{{name}}</a> - in {{color}}. </li>
 	  {{/each}}
 	</ul>
+</template>
+
+
+<template name="fetchOutfitForm">
+    <form>
+        <input name="url" class="form_url" type="text">
+        <button type="submit">fetch Outfit</button>
+    </form>
 </template>
 

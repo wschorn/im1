@@ -22,6 +22,23 @@ if (Meteor.isClient) {
   };
 
 
+  Template.fetchOutfitForm.events({
+    'submit form': function(event, template) {
+        event.preventDefault();
+        var bundleUrl = template.find(".form_url").value;
+        console.log("getting o for: " + bundleUrl);
+        Meteor.call('fetchOutfitFromBundle', bundleUrl, function (error, result) {
+          if(!error){
+            
+            console.log("inserted");
+          }else{
+            console.error(error);
+          }
+
+        });
+    }
+});
+
 
   Template.hello.events({
     'click input' : function () {
