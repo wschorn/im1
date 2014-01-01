@@ -46,7 +46,7 @@ if (Meteor.isServer) {
       }
 
 
-      newOutfit = {name: result.data.bundle.title, description: result.data.bundle.title, garments: newGarments};
+      newOutfit = {name: result.data.bundle.title, description: result.data.bundle.description, garments: newGarments};
 
       Outfits.insert(newOutfit);
       // For each bundle, get the bundle contents, each link should be a garment. 
@@ -75,14 +75,6 @@ if (Meteor.isServer) {
     }
 
 
-
-    
-
-  //console.log(b);
-  b.link.clicks({ link: "http://bit.ly/Ki1L7Y" }, function(err, result){
-  // do stuff
-    //console.log(result);
-});
 
     //api.add_files(['index.js', '../../packages.json'], 'server');
   });
