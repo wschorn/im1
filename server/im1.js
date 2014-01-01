@@ -24,6 +24,7 @@ if (Meteor.isServer) {
         }
       };
 
+      // _wrapAsync is undocumented, but I freaking love it. Any of the bitly-oauth methods can be wrapped this way.
       b.bundleSync = Meteor._wrapAsync(b.bundle.contents);
       try {
         var result = b.bundleSync({bundle_link: "http://bitly.com/bundles/wschornmeteor/1"});
@@ -33,7 +34,18 @@ if (Meteor.isServer) {
         } 
 
       console.log("res:" + JSON.stringify(result));
-      newOutfit = {name: result.data.bundle.title, description: result.data.bundle.title, garments: [{name:'shirt', color:'black'}, {name:'pants', color:'blue'}]};
+      newGarments = []
+      console.log("adding: " + result.data.bundle.links);
+
+
+      //doing this loop the stupid way, because I'm gonna convert everything to coffeescript soon...soon...
+      for( myLink in result.data.bundle.links){
+        console.log("t: " + result.data.bundle.links[myLink].title);
+        newGarments.push({name: result.data.bundle.links[myLink].title, color: 'black'});
+      }
+
+
+      newOutfit = {name: result.data.bundle.title, description: result.data.bundle.title, garments: newGarments};
 
       Outfits.insert(newOutfit);
       // For each bundle, get the bundle contents, each link should be a garment. 
