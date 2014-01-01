@@ -6,13 +6,24 @@
 
   {{> header}}
    </br>
+  {{> fetchUserOutfits}}
+
   {{> fetchOutfitForm}}
   {{> myOutfits}}
-
-
-
+  {{> myGarments}}
 
 </body>
+
+
+
+<template name="myGarments">
+  <div class="myGarments">
+  <h2>Garments: </h2>
+    {{#each garments}}
+      <li><a href="{{link}}">{{name}}</a> - in {{color}}. </li>
+    {{/each}}
+   </div>
+</template>
 
 <template name="header">
   <div class="header_title">imwearin</div>
@@ -21,7 +32,10 @@
 
 <template name="myOutfits">
   <div class="myOutfits">
-	You have {{numOutfits}} outfits.
+  {{#if viewingOutfits}}
+	{{viewingOutfits}} has {{numViewingOutfits}} outfits.
+  {{/if}}
+  In the world there are {{numOutfits}} outfits.
 	<h2>Your Outfits: </h2>
    	{{#each outfits}}
       {{> outfit}}
@@ -31,14 +45,17 @@
 
 
 <template name="outfit">
-
-	<div class="o_title">{{name}} </div>
-  <div class="o_description">{{description}}</div> </div><a href="#" class="delete">[x]</a>
+  <div class="outfit {{outfitClass}}">
+	<div class="o_title">{{name}} </div> by {{user}} <br/>
+  <div class="o_description">{{description}}</div> - ({{garments.length}} pieces) - <a href="#" class="delete">[x]</a>
+  {{#if outfitClass}}
 	<ul id="garments">
 	  {{#each garments}}
 		  <li><a href="{{link}}">{{name}}</a> - in {{color}}. </li>
 	  {{/each}}
+    {{/if}}
 	</ul>
+</div>
 </template>
 
 
@@ -46,6 +63,14 @@
     <form>
         <input name="url" class="form_url" type="text">
         <button type="submit">fetch Outfit</button>
+    </form>
+</template>
+
+
+<template name="fetchUserOutfits">
+    <form>
+        <input name="url" class="form_url" type="text">
+        <button type="submit">inspect user</button>
     </form>
 </template>
 
