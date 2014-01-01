@@ -39,9 +39,10 @@ if (Meteor.isServer) {
 
 
       //doing this loop the stupid way, because I'm gonna convert everything to coffeescript soon...soon...
-      for( myLink in result.data.bundle.links){
-        console.log("t: " + result.data.bundle.links[myLink].title);
-        newGarments.push({name: result.data.bundle.links[myLink].title, color: 'black'});
+      for(myLink in result.data.bundle.links){
+
+        curr = result.data.bundle.links[myLink];
+        newGarments.push({name: curr.title, link: curr.link, color: 'black'});
       }
 
 

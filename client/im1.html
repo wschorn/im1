@@ -33,11 +33,11 @@
 
 
 <template name="outfit">
-	<div class="o_title">Outfit: {{name}} - <a href="#" class="delete">[x]</a></div>
+	<div class="o_title">{{name}} - <a href="#" class="delete">x</a></div>
   <div class="o_description">{{description}}</div>
 	<ul id="garments">
 	  {{#each garments}}
-		  <li><a href="{{name}}">{{name}}</a> - in {{color}}. </li>
+		  <li><a href="{{link}}">{{name}}</a> - in {{color}}. </li>
 	  {{/each}}
 	</ul>
 </template>
