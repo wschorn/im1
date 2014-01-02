@@ -41,7 +41,7 @@ if (Meteor.isServer) {
       }
       var rdb = result.data.bundle;
       //currently the user photo is stored in the description. this is janky, eventually we should perhaps pull the first link in the bundle?
-      newOutfit = {user: rdb.bundle_owner, name: rdb.title, user_photo: rdb.description, garments: newGarments};
+      newOutfit = {user: rdb.bundle_owner, name: rdb.title, userPhoto: rdb.description, garments: newGarments};
       return newOutfit;
       //Outfits.insert(newOutfit);
       // For each bundle, get the bundle contents, each link should be a garment. 
@@ -59,9 +59,9 @@ if (Meteor.isServer) {
 
     //insert dummy outfits to play with if we have none.
     if (Outfits.find().count() === 0) {
-        var outfit1 = {user: 'bob', name: "not naked", user_photo: "i dressed myself today", garments: [{name:'shirt', color:'black'}, {name:'pants', color:'blue'}]};
-        var outfit2 = {user: 'adam', name: "fancy", user_photo: "something something something 'bout a sharp dressed man", garments: [{name:'shirt', color:'white'}, {name:'slacks', color:'black'}]};     
-        var outfit3 = {user: 'bob', name: "artsy", user_photo: "go away", garments: [{name:'shirt', color:'black'}, {name:'skinny jeans', color:'black'}]};
+        var outfit1 = {user: 'bob', name: "not naked", userPhoto: "i dressed myself today", garments: [{name:'shirt', color:'black'}, {name:'pants', color:'blue'}]};
+        var outfit2 = {user: 'adam', name: "fancy", userPhoto: "something something something 'bout a sharp dressed man", garments: [{name:'shirt', color:'white'}, {name:'slacks', color:'black'}]};     
+        var outfit3 = {user: 'bob', name: "artsy", userPhoto: "go away", garments: [{name:'shirt', color:'black'}, {name:'skinny jeans', color:'black'}]};
         
         Outfits.insert(outfit1);
         Outfits.insert(outfit2);

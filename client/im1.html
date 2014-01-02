@@ -48,7 +48,7 @@
 	<div class="o_title">{{name}} </div> by {{user}} <br/>
   ({{garments.length}} pieces) - <a href="#" class="delete">[x]</a><br/>
   {{#if outfitClass}}
-  <img class="o_photo" src={{description}}></img>
+  <img class="o_photo" src="{{userPhoto}}"></img>
 	<ul id="garments">
 	  {{#each garments}}
 		  <li><a href="{{link}}">{{name}}</a> - in {{color}}. </li>
@@ -68,6 +68,7 @@
 
 
 <template name="fetchUserOutfits">
+  To import an outfit: Create a bundle of garments with the user photo as the description. <br/>
     <form>
         <input name="url" class="form_url" type="text">
         <button type="submit">inspect user</button>
