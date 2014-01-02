@@ -46,8 +46,9 @@
 <template name="outfit">
   <div class="outfit {{outfitClass}}">
 	<div class="o_title">{{name}} </div> by {{user}} <br/>
-  <div class="o_description">{{description}}</div> - ({{garments.length}} pieces) - <a href="#" class="delete">[x]</a>
+  ({{garments.length}} pieces) - <a href="#" class="delete">[x]</a><br/>
   {{#if outfitClass}}
+  <img class="o_photo" src={{description}}></img>
 	<ul id="garments">
 	  {{#each garments}}
 		  <li><a href="{{link}}">{{name}}</a> - in {{color}}. </li>
