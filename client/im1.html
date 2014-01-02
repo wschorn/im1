@@ -32,7 +32,7 @@
 <template name="myOutfits">
   <div class="myOutfits">
   {{#if viewingOutfits}}
-	{{viewingOutfits}} has {{numViewingOutfits}} outfits.
+	Searching '{{viewingOutfits}}' found {{numViewingOutfits}} {{pluralize numViewingOutfits "outfit" "outfits"}}. 
   {{/if}}
   In the world there are {{numOutfits}} outfits.
 	<h2>Your Outfits: </h2>

@@ -21,8 +21,10 @@ if (Meteor.isClient) {
         ]};
 
     }
+    var resultsLimit = 10;
     Session.set("selectedOutfit", null);
-    return Outfits.find(finder);
+    Session.set("query", finder);
+    return Outfits.find(finder, {limit: resultsLimit});
   };
 
 
@@ -33,7 +35,7 @@ if (Meteor.isClient) {
 
 
   Template.myOutfits.numViewingOutfits = function () {
-    return Outfits.find({user: Session.get('viewingOutfits')}).count();
+    return Outfits.find(Session.get("query")).count();
   };
 
   Template.myOutfits.viewingOutfits = function () {
@@ -103,6 +105,15 @@ Handlebars.registerHelper('if_eq', function(context, options) {
   if (context == options.hash.compare)
     return options.fn(this);
   return options.inverse(this);
+});
+
+
+Handlebars.registerHelper('pluralize', function(number, singular, plural) {
+  if(number == 1){
+    return singular
+  }else{
+    return plural
+  }
 });
 
 
