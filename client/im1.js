@@ -1,13 +1,27 @@
 if (Meteor.isClient) {
+
+
+  Meteor.startup(function () {
+    Session.set('viewingOutfits', "");
+  });
+
   Outfits = new Meteor.Collection("outfits");
 
 
   Template.myOutfits.outfits = function () {
 
-    var finder = {}
+    var finder = {};
     if (!Session.equals('viewingOutfits', "")){
-      finder = {user: Session.get('viewingOutfits')};
+      //finder = {user: Session.get('viewingOutfits')};
+      var query = Session.get('viewingOutfits');
+      var finder = { $or: [
+        { 'user': {$regex: query, $options: 'i'}},
+        { 'name': {$regex: query, $options: 'i'}},
+        { 'garments.title': {$regex: query, $options: 'i'}}
+        ]};
+
     }
+    Session.set("selectedOutfit", null);
     return Outfits.find(finder);
   };
 
@@ -74,7 +88,11 @@ if (Meteor.isClient) {
       Outfits.remove(this._id);
     },
     'click': function () {
+      if(!Session.equals("selectedOutfit", this._id)){
       Session.set("selectedOutfit", this._id);
+    }else{
+          Session.set("selectedOutfit", null);
+    }
     } 
   });
 
