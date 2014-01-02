@@ -3,6 +3,7 @@ if (Meteor.isClient) {
 
   Meteor.startup(function () {
     Session.set('viewingOutfits', "");
+
   });
 
   Outfits = new Meteor.Collection("outfits");
@@ -116,6 +117,12 @@ Handlebars.registerHelper('pluralize', function(number, singular, plural) {
   }
 });
 
+
+Handlebars.registerHelper('ts_ago', function( timestamp ) {
+  
+  return moment.unix(timestamp).fromNow();
+
+});
 
 }
 

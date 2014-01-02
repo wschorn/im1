@@ -35,7 +35,7 @@
 	Searching '{{viewingOutfits}}' found {{numViewingOutfits}} {{pluralize numViewingOutfits "outfit" "outfits"}}. 
   {{/if}}
   In the world there are {{numOutfits}} outfits.
-	<h2>Your Outfits: </h2>
+	<h2>Outfits: </h2>
    	{{#each outfits}}
       {{> outfit}}
     {{/each}}
@@ -45,7 +45,7 @@
 
 <template name="outfit">
   <div class="outfit {{outfitClass}}">
-	<div class="o_title">{{name}} </div> by {{user}} <br/>
+	<div class="o_title">{{name}} </div> by {{user}} <div class="ts_ago">{{ts_ago ts_modified}}.</div> <br/>
   ({{garments.length}} pieces) - <a href="#" class="delete">[x]</a><br/>
   {{#if outfitClass}}
   <img class="o_photo" src="{{userPhoto}}"></img>
@@ -54,6 +54,7 @@
 		  <li><a href="{{link}}">{{name}}</a> - in {{color}}. </li>
 	  {{/each}}
     {{/if}}
+
 	</ul>
 </div>
 </template>

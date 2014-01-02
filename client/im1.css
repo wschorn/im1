@@ -54,7 +54,10 @@ background-color: #ffffff;
 	display: inline;
 }
 
-
+.ts_ago {
+	color: #aaa;
+	display: inline;
+}
 
 .o_userPhoto {
 	color: #888;

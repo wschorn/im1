@@ -41,7 +41,7 @@ if (Meteor.isServer) {
       }
       var rdb = result.data.bundle;
       //currently the user photo is stored in the description. this is janky, eventually we should perhaps pull the first link in the bundle?
-      newOutfit = {user: rdb.bundle_owner, name: rdb.title, userPhoto: rdb.description, garments: newGarments};
+      newOutfit = {user: rdb.bundle_owner, name: rdb.title, userPhoto: rdb.description, garments: newGarments, ts_modified: rdb.last_modified_ts};
       return newOutfit;
       //Outfits.insert(newOutfit);
       // For each bundle, get the bundle contents, each link should be a garment. 
