@@ -90,16 +90,23 @@ if (Meteor.isClient) {
       console.log("you clicked delete on " + JSON.stringify(this));
       Outfits.remove(this._id);
     },
-    'click': function () {
+    'click .outfit': function () {
       if(!Session.equals("selectedOutfit", this._id)){
       Session.set("selectedOutfit", this._id);
     }else{
           Session.set("selectedOutfit", null);
     }
+    },
+    'click .user_outfits' : function (event, template) {
+      var target = event.target.getAttribute("data-user");
+      console.log(target);
+      Session.set('viewingOutfits', target);
     } 
   });
 
 
+
+//       with function(event, tempalte)  console.log(event.target.getAttribute("data-id"));
   // Helpers
 
 Handlebars.registerHelper('if_eq', function(context, options) {

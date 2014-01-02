@@ -45,7 +45,7 @@
 
 <template name="outfit">
   <div class="outfit {{outfitClass}}">
-	<div class="o_title">{{name}} </div> by {{user}} <div class="ts_ago">{{ts_ago ts_modified}}.</div> <br/>
+	<div class="o_title">{{name}} </div> by <a href="#" class="user_outfits" data-user="{{user}}">{{user}}</a> <div class="ts_ago">{{ts_ago ts_modified}}.</div> <br/>
   ({{garments.length}} pieces) - <a href="#" class="delete">[x]</a><br/>
   {{#if outfitClass}}
   <img class="o_photo" src="{{userPhoto}}"></img>
