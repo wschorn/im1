@@ -17,7 +17,7 @@ if (Meteor.isClient) {
       var finder = { $or: [
         { 'user': {$regex: query, $options: 'i'}},
         { 'name': {$regex: query, $options: 'i'}},
-        { 'garments.title': {$regex: query, $options: 'i'}}
+        { 'garments.name': {$regex: query, $options: 'i'}}
         ]};
 
     }
