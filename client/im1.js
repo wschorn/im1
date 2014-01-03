@@ -4,9 +4,29 @@ if (Meteor.isClient) {
   Meteor.startup(function () {
     Session.set('viewingOutfits', "");
 
+        if (Garments.find().count() === 0) {
+        var garment1 = {name:'shirt', color:'black'};
+        var garment2 = {name:'shirt', color:'white'};
+        var garment3 = {name:'jeans', color:'black'};
+        var garment4= {name:'jeans', color:'blue'};
+        var garment3 = {name:'sweater', color:'black'};
+        var garment4= {name:'jacket', color:'brown'};
+
+
+        Garments.insert(garment1);
+        Garments.insert(garment2);
+        Garments.insert(garment3);
+        Garments.insert(garment4);
+        Garments.insert(garment5);
+        Garments.insert(garment6);
+
+
+      }
+
   });
 
   Outfits = new Meteor.Collection("outfits");
+  Garments = new Meteor.Collection("garments");
 
 
   Template.myOutfits.outfits = function () {

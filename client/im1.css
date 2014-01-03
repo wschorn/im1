@@ -5,21 +5,28 @@
 
 
 body {
-	padding: 15px;
-	background-color:#FFFEFA;
+  background-color:#FFFEFA;
+  margin: 0px;
+}
+
+.content {
+  padding: 15px;
+  position: absolute;
+  top: 100px;
 }
 
 .o_title {
-	color: #000;
-	font-size: 48px;
-	font-family: 'Abril Fatface', cursive;	
-	letter-spacing: 1px;
-	text-transform: capitalize;
-	display: inline;
+  color: #000;
+  font-size: 48px;
+  font-family: 'Abril Fatface', Georgia;  
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  display: inline;
+  height: 150px;
 }
 
 .outfit {
-background-color: #ffffff;	
+background-color: #ffffff;  
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -28,50 +35,76 @@ background-color: #ffffff;
 }
 
 .o_photo {
-	max-width: 400px;
-	max-height: 400px;
-	float: right;
-	padding-right: 15px;
+  max-width: 400px;
+  max-height: 400px;
+  float: right;
+  padding-right: 15px;
 }
 
 .outfit.selected {
-	background-color: #EEEEEE;
-	height: 500px;
+  background-color: #EEEEEE;
+  height: 500px;
+}
+
+.header {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  color: #fff;
+  background-color: #222;
 }
 
 .header_title {
-	color: #fff;
-	background-color: #222;
-	font-size: 60px;
-	font-family: 'Abril Fatface', cursive;	
-	letter-spacing: 1px;
-	padding-left: 10px;
-	width: 650px;
 
+  font-size: 60px;
+  font-family: 'Abril Fatface', Georgia;  
+  letter-spacing: 1px;
+  display: inline;
+  padding-left: 25px;
+}
+
+.header_search {
+  display: inline;
+  position: absolute;
+  left: 40%;
+  top: 25px;
+}
+
+form.header_search_form {
+  display: inline;
 }
 
 .delete {
-	display: inline;
+  display: inline;
 }
 
 .ts_ago {
-	color: #aaa;
-	display: inline;
+  color: #aaa;
+  display: inline;
 }
 
 .o_userPhoto {
-	color: #888;
-	font-size: 18px;
-	font-family: 'Georgia', cursive;	
-	letter-spacing: 1px;
-	text-transform: capitalize;
-	display: inline;
+  color: #888;
+  font-size: 18px;
+  font-family: 'Georgia', cursive;  
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  display: inline;
 
 }
 
-	.myOutfits {
-		border: 1px solid #222;
-		padding: 5px;
-		display: inline-block;
-		width: 650px;
-	}
+.myOutfits {
+  border: 1px solid #222;
+  padding: 5px;
+  display: inline-block;
+  width: 650px;
+}
+
+
+
+.myGarments {
+  float: right;
+  border: 1px solid #222;
+  padding: 5px;
+
+}
