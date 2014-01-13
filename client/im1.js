@@ -3,7 +3,7 @@ if (Meteor.isClient) {
 
   Meteor.startup(function () {
     Session.set('viewingOutfits', "");
-
+    Session.set('lastOutfitViewed', 0);
         if (Garments.find().count() === 0) {
         var garment1 = {name:'shirt', color:'black'};
         var garment2 = {name:'shirt', color:'white'};
@@ -27,6 +27,27 @@ if (Meteor.isClient) {
 
   Outfits = new Meteor.Collection("outfits");
   Garments = new Meteor.Collection("garments");
+
+
+
+  Template.myGarments.garments = function () {
+
+    var finder = {};
+    // if (!Session.equals('viewingOutfits', "")){
+    //   //finder = {user: Session.get('viewingOutfits')};
+    //   var query = Session.get('viewingOutfits');
+    //   var finder = { $or: [
+    //     { 'user': {$regex: query, $options: 'i'}},
+    //     { 'name': {$regex: query, $options: 'i'}},
+    //     { 'garments.name': {$regex: query, $options: 'i'}}
+    //     ]};
+
+    // }
+    var resultsLimit = 10;
+    //Session.set("selectedOutfit", null);
+    //Session.set("query", finder);
+    return Garments.find(finder, {limit: resultsLimit});
+  };
 
 
   Template.myOutfits.outfits = function () {
@@ -74,6 +95,11 @@ if (Meteor.isClient) {
   };
 
 
+// red is only garments newer than the last garment we clicked, which is in our session.
+  Template.outfit.outfitColor = function() {
+    return (Session.get("lastOutfitViewed") < this.ts_ago) ?
+      "red" : "gray";
+  };
 
 
 
@@ -113,6 +139,9 @@ if (Meteor.isClient) {
     'click .outfit': function () {
       if(!Session.equals("selectedOutfit", this._id)){
       Session.set("selectedOutfit", this._id);
+      if(Session.get("lastOutfitViewed") < this.ts_ago){
+        Session.set("lastOutfitViewed", this.ts_ago);
+      }
     }else{
           Session.set("selectedOutfit", null);
     }
@@ -150,6 +179,8 @@ Handlebars.registerHelper('ts_ago', function( timestamp ) {
   return moment.unix(timestamp).fromNow();
 
 });
+
+
 
 }
 

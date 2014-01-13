@@ -48,7 +48,7 @@
 
 
 <template name="outfit">
-  <div class="outfit {{outfitClass}}">
+  <div class="outfit {{outfitClass}} {{outfitColor}}">
 	<div class="o_title">{{name}} </div> by <a href="#" class="user_outfits" data-user="{{user}}">{{user}}</a> <div class="ts_ago">{{ts_ago ts_modified}}</div> <br/>
   ({{garments.length}} pieces) - <a href="#" class="delete">[x]</a><br/>
   {{#if outfitClass}}
@@ -65,11 +65,13 @@
 
 
 <template name="fetchOutfitForm">
-    To import an outfit: Create a bundle of garments with the user photo as the description. <br/>
     <form>
         <input name="url" class="form_url" type="text">
         <button type="submit">import Outfit</button>
     </form>
+    <br/>
+    To import an outfit: Create a bundle of garments with the user photo as the description. <br/>
+
 </template>
 
 

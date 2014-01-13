@@ -13,6 +13,15 @@ body {
   padding: 15px;
   position: absolute;
   top: 100px;
+  max-width: 800px;
+}
+
+div.outfit.red {
+  background: #BF716D;
+}
+
+div.red > .o_title, div.red > .ts_ago {
+    color: #FCFCFC !important;
 }
 
 .o_title {
@@ -23,6 +32,8 @@ body {
   text-transform: capitalize;
   display: inline;
   height: 150px;
+  padding-left: 10px;
+  line-height: 60px;
 }
 
 .outfit {
@@ -97,7 +108,7 @@ form.header_search_form {
   border: 1px solid #222;
   padding: 5px;
   display: inline-block;
-  width: 650px;
+  width: 500px;
 }
 
 
@@ -106,5 +117,6 @@ form.header_search_form {
   float: right;
   border: 1px solid #222;
   padding: 5px;
+  width: 250px;
 
 }
