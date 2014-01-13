@@ -1,4 +1,6 @@
 if (Meteor.isClient) {
+  Outfits = new Meteor.Collection("outfits");
+  Garments = new Meteor.Collection("garments");
 
 
   Meteor.startup(function () {
@@ -25,8 +27,6 @@ if (Meteor.isClient) {
 
   });
 
-  Outfits = new Meteor.Collection("outfits");
-  Garments = new Meteor.Collection("garments");
 
 
 
@@ -97,7 +97,9 @@ if (Meteor.isClient) {
 
 // red is only garments newer than the last garment we clicked, which is in our session.
   Template.outfit.outfitColor = function() {
-    return (Session.get("lastOutfitViewed") < this.ts_ago) ?
+    console.log(Session.get("highlightUser") + " " + this.user + " "  + Session.equals("highlightUser" , this.user) );
+
+    return (Session.equals("highlightUser" , this.user)) ?
       "red" : "gray";
   };
 
@@ -139,6 +141,8 @@ if (Meteor.isClient) {
     'click .outfit': function () {
       if(!Session.equals("selectedOutfit", this._id)){
       Session.set("selectedOutfit", this._id);
+            Session.set('highlightUser', null);
+
       if(Session.get("lastOutfitViewed") < this.ts_ago){
         Session.set("lastOutfitViewed", this.ts_ago);
       }
@@ -147,9 +151,13 @@ if (Meteor.isClient) {
     }
     },
     'click .user_outfits' : function (event, template) {
+      event.stopPropagation();
       var target = event.target.getAttribute("data-user");
       console.log(target);
-      Session.set('viewingOutfits', target);
+      //Session.set('viewingOutfits', target);
+      Session.set('highlightUser', target);
+      Session.set('selectedOutfit', null);
+
     } 
   });
 
