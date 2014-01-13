@@ -62,7 +62,7 @@ background-color: #ffffff;
   width: 100%;
   top: 0px;
   color: #fff;
-  background-color: #222;
+  background-color: #232B2B;
 }
 
 .header_title {
@@ -105,7 +105,7 @@ form.header_search_form {
 }
 
 .myOutfits {
-  border: 1px solid #222;
+  border: 1px solid #232B2B;
   padding: 5px;
   display: inline-block;
   width: 500px;
@@ -115,7 +115,7 @@ form.header_search_form {
 
 .myGarments {
   float: right;
-  border: 1px solid #222;
+  border: 1px solid #232B2B;
   padding: 5px;
   width: 250px;
 

@@ -176,7 +176,7 @@ Handlebars.registerHelper('pluralize', function(number, singular, plural) {
 
 Handlebars.registerHelper('ts_ago', function( timestamp ) {
   
-  return moment.unix(timestamp).fromNow();
+  return moment.unix(timestamp).fromNow() + " " + timestamp;
 
 });
 
