@@ -37,12 +37,20 @@ div.red > .o_title, div.red > .ts_ago {
 }
 
 .outfit {
+  height: 200px;
 background-color: #ffffff;  
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
   transition: all 0.5s ease;
+
+
+
+      transition: height 2s;
+    -moz-transition: height 2s; /* Firefox 4 */
+    -webkit-transition: height 2s; /* Safari and Chrome */
+    -o-transition: height 2s; /* Opera */
 }
 
 .o_photo {

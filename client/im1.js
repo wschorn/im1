@@ -66,6 +66,7 @@ if (Meteor.isClient) {
     var resultsLimit = 10;
     Session.set("selectedOutfit", null);
     Session.set("query", finder);
+    Session.set("highlightUser", "");
     return Outfits.find(finder, {limit: resultsLimit});
   };
 
