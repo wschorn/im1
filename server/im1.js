@@ -3,6 +3,7 @@ if (Meteor.isServer) {
   Garments = new Meteor.Collection("garments");
 
   var Bitly = Meteor.require("bitly-oauth");
+  
   var dummyUser = 'wschornmeteor';
 
   //During startip, we'll set up a unique user/session ID and let that fill in WHICH bitly account we login to. 
